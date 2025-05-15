@@ -21,7 +21,7 @@ export class ReceiptsController {
   getAllReceipts() {
     // Logic to get all receipts
     const allReceipts = this.receiptsService.getAllReceipts();
-    console.log('All Receipts (Controller):', allReceipts);
+    //console.log('All Receipts (Controller):', allReceipts);
     return Array.from(allReceipts.entries());
   }
 

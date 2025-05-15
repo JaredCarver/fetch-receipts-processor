@@ -29,7 +29,7 @@ export class ReceiptCalculatorService {
     let totalPoints = 0;
     for (const rule of this.rules) {
       const itemAmount = rule.calculate(receipt);
-      console.log(`Rule: ${rule.constructor.name}, Points: ${itemAmount}`);
+      //console.log(`Rule: ${rule.constructor.name}, Points: ${itemAmount}`);
       totalPoints += itemAmount;
     }
     // Limit the total points to a maximum of 10,000 to prevent abuse of the system

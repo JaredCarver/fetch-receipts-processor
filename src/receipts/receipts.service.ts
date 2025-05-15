@@ -25,7 +25,7 @@ export class ReceiptsService {
   getAllReceipts(): Map<UUID, number> {
     // Get all receipts from the cache
     const allReceipts = this.receiptCacheService.getAllReceipts();
-    console.log('All Receipts:', allReceipts);
+    //console.log('All Receipts:', allReceipts);
     return allReceipts;
   }
 
@@ -34,7 +34,7 @@ export class ReceiptsService {
     const reciptId = crypto.randomUUID();
     const points = this.receiptCalculator.calculateTotalPoints(receipt);
     // Store the receipt in the cache
-    console.log(`Receipt ID: ${reciptId}, Points: ${points}`);
+    //console.log(`Receipt ID: ${reciptId}, Points: ${points}`);
     return this.receiptCacheService.setReceipt(reciptId, points);
   }
 
