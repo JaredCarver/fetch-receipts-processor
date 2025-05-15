@@ -37,4 +37,5 @@ class ItemDto {
   @IsNumberString()
   @Matches(/^\d+\.\d{2}$/) // Matches a number with two decimal places
   price: string;
+  description: any;
 }
