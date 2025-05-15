@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "6045a419-ef27-47ea-8d79-d61ac19d69eb",
+		"name": "Fetch Receipt POSTMAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30496226"
+	},
+	"item": [
+		{
+			"name": "Create Receipt (28 pts)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"Target\",\r\n  \"purchaseDate\": \"2022-01-01\",\r\n  \"purchaseTime\": \"13:01\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Mountain Dew 12PK\",\r\n      \"price\": \"6.49\"\r\n    },{\r\n      \"shortDescription\": \"Emils Cheese Pizza\",\r\n      \"price\": \"12.25\"\r\n    },{\r\n      \"shortDescription\": \"Knorr Creamy Chicken\",\r\n      \"price\": \"1.26\"\r\n    },{\r\n      \"shortDescription\": \"Doritos Nacho Cheese\",\r\n      \"price\": \"3.35\"\r\n    },{\r\n      \"shortDescription\": \"   Klarbrunn 12-PK 12 FL OZ  \",\r\n      \"price\": \"12.00\"\r\n    }\r\n  ],\r\n  \"total\": \"35.35\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Receipts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/receipts/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Receipt Points",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/receipts/fe83a616-e57c-48e5-9cb8-c993bb792291/points",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"fe83a616-e57c-48e5-9cb8-c993bb792291",
+						"points"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Receipt (109 pts)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"M&M Corner Market\",\r\n  \"purchaseDate\": \"2022-3-20\",\r\n  \"purchaseTime\": \"14:33\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    }\r\n  ],\r\n  \"total\": \"9.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Receipt (Bad Data)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"M&M Corner Market @@ Wooorld's Beeeeest **&#&^\",\r\n  \"purchaseDate\": \"2022-03-40\",\r\n  \"purchaseTime\": \"34:33\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.2.25\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"Fifty Bucks\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    },{\r\n      \"shortDescription\": \"Gatorade\",\r\n      \"price\": \"2.25\"\r\n    }\r\n  ],\r\n  \"total\": \"-9.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Receipt (57 pts)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"Whole Foods\",\r\n  \"purchaseDate\": \"2022-05-17\",\r\n  \"purchaseTime\": \"15:15\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Organic Bananas\",\r\n      \"price\": \"1.00\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Almond Milk Unsweetened\",\r\n      \"price\": \"3.50\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Cage-Free Eggs\",\r\n      \"price\": \"4.00\"\r\n    }\r\n  ],\r\n  \"total\": \"8.50\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Receipt (12 pts)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"7-Eleven\",\r\n  \"purchaseDate\": \"2022-12-10\",\r\n  \"purchaseTime\": \"10:00\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Big Gulp\",\r\n      \"price\": \"1.89\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Hot Dog\",\r\n      \"price\": \"2.25\"\r\n    }\r\n  ],\r\n  \"total\": \"4.14\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Receipt (42 pts)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"retailer\": \"Costco Wholesale\",\r\n  \"purchaseDate\": \"2022-07-07\",\r\n  \"purchaseTime\": \"14:59\",\r\n  \"items\": [\r\n    {\r\n      \"shortDescription\": \"Bulk Toilet Paper\",\r\n      \"price\": \"19.99\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Rotisserie Chicken\",\r\n      \"price\": \"4.99\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Bag of Peanuts\",\r\n      \"price\": \"7.00\"\r\n    },\r\n    {\r\n      \"shortDescription\": \"Giant Muffins\",\r\n      \"price\": \"6.00\"\r\n    }\r\n  ],\r\n  \"total\": \"37.98\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/receipts/process",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear Receipts",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/receipts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Receipt",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/receipts/718d6967-0953-431c-b1f3-b8d8b2a572d3/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"receipts",
+						"718d6967-0953-431c-b1f3-b8d8b2a572d3",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
