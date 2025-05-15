@@ -2,7 +2,7 @@
 Here is the requested code take-home from Fetch [https://github.com/fetch-rewards/receipt-processor-challenge/tree/main](https://github.com/fetch-rewards/receipt-processor-challenge/tree/main)
 </p>
 <p>
-  Some notes here from my time looking at all these
+  Some notes after working on this.
   <ol start="0"> 
   <li>
   I've coded this in NestJS as it was something I was unfamiliar with, but had been looking for a good excuse to make use of it in a semi-real environement
