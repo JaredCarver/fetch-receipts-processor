@@ -36,7 +36,6 @@ export class ReceiptsController {
 
   @Post('process')
   processReceipt(@Body(ValidationPipe) input: ReceiptInputDto) {
-    //TODO Remove Custom Validation Pipe Messages
     // Logic to process a receipt
     return { id: this.receiptsService.processReceipt(input) }; // Return the receipt ID with "id" key
   }
