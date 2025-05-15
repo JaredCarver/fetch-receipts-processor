@@ -21,6 +21,10 @@ export class ReceiptsService {
     }
   }
 
+  hasReceipt(id: UUID): boolean {
+    return this.receiptCacheService.hasReceipt(id);
+  }
+
   // Again, normally I wouldn't have this method due to security and blah blah blah, but for the sake of debugging and adding in some extra functionality, it's in here
   getAllReceipts(): Map<UUID, number> {
     // Get all receipts from the cache

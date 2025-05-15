@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
   IsDate,
   IsNumberString,
@@ -9,6 +8,10 @@ import {
 import { Type } from 'class-transformer';
 
 export class ReceiptInputDto {
+  //None of these messages are going to be displayed because I've overridden the default error messages in the main.ts file
+  //This was done to match the spec sheet, however, I think normally I would expose these to vendor so they could understand why
+  //their receipt was invalid
+
   @IsString()
   @Matches(/^[\w\s\-&]+$/, {
     message:

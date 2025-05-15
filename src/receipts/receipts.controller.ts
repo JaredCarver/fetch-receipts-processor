@@ -28,11 +28,15 @@ export class ReceiptsController {
   @Get(':id/points')
   getReceiptPoints(@Param('id', new ParseUUIDPipe()) id: UUID) {
     // Logic to get points for a specific receipt
+    if (!this.receiptsService.hasReceipt(id)) {
+      return { message: `No receipt found for that ID.` }; // Return a message if the receipt is not found, normally I like to throw the actual ID back, but just following the pattern in the spec
+    }
     return { points: this.receiptsService.getReceiptById(id) }; // Return points with "points" key
   }
 
   @Post('process')
   processReceipt(@Body(ValidationPipe) input: ReceiptInputDto) {
+    //TODO Remove Custom Validation Pipe Messages
     // Logic to process a receipt
     return { id: this.receiptsService.processReceipt(input) }; // Return the receipt ID with "id" key
   }
