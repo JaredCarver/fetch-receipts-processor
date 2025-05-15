@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ReceiptCacheService } from '../receipt-cache/receipt-cache.service';
 import { UUID } from 'crypto';
+import { ReceiptInputDto } from 'src/dto/receipt-input.dto';
 
 @Injectable()
 export class ReceiptsService {
@@ -21,13 +22,12 @@ export class ReceiptsService {
     return allReceipts;
   }
 
-  setReceipt(points: number): UUID {
-    // Generate a new UUID for the receipt
+  processReceipt(receipt: ReceiptInputDto): UUID {
     const reciptId = crypto.randomUUID();
     const pointsTemp = Math.floor(Math.random() * 100); // Simulate points calculation
     // Store the receipt in the cache
     console.log(`Receipt ID: ${reciptId}, Points: ${pointsTemp}`);
-    if (points > 0) {
+    if (Number(receipt.total) < 0) {
       return reciptId;
     }
     return this.receiptCacheService.setReceipt(reciptId, pointsTemp);

@@ -5,9 +5,11 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ReceiptsService } from './receipts.service';
 import { UUID } from 'crypto';
+import { ReceiptInputDto } from 'src/dto/receipt-input.dto';
 
 @Controller('receipts')
 export class ReceiptsController {
@@ -25,13 +27,12 @@ export class ReceiptsController {
   @Get(':id/points')
   getReceiptPoints(@Param('id', new ParseUUIDPipe()) id: UUID) {
     // Logic to get points for a specific receipt
-    return `Points for the receipt with ID: ${this.receiptsService.getReceiptById(id)}`;
+    return `Points for the receipt ${id}: ${this.receiptsService.getReceiptById(id)}`;
   }
 
   @Post('process')
-  processReceipt(@Body() input: any) {
+  processReceipt(@Body(ValidationPipe) input: ReceiptInputDto) {
     // Logic to process a receipt
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    return this.receiptsService.setReceipt(input);
+    return this.receiptsService.processReceipt(input);
   }
 }
