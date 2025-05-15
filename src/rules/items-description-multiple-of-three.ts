@@ -13,6 +13,9 @@ export class ItemsDescriptionMultipleOfThree implements ReceiptRule {
         const trimmedDescription = item.shortDescription.trim();
         const descriptionLength = trimmedDescription.length;
         // Check if the trimmed length of the item description is a multiple of 3
+        //console.log(
+        //  `Description: ${trimmedDescription}, Length: ${descriptionLength}`,
+        //);
         if (descriptionLength % 3 === 0) {
           const points = Math.ceil(Number(item.price) * 0.2);
           totalPoints += points;

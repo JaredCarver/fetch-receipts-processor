@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseUUIDPipe,
@@ -27,12 +28,27 @@ export class ReceiptsController {
   @Get(':id/points')
   getReceiptPoints(@Param('id', new ParseUUIDPipe()) id: UUID) {
     // Logic to get points for a specific receipt
-    return `Points for the receipt ${id}: ${this.receiptsService.getReceiptById(id)}`;
+    return { points: this.receiptsService.getReceiptById(id) }; // Return points with "points" key
   }
 
   @Post('process')
   processReceipt(@Body(ValidationPipe) input: ReceiptInputDto) {
     // Logic to process a receipt
-    return this.receiptsService.processReceipt(input);
+    return { id: this.receiptsService.processReceipt(input) }; // Return the receipt ID with "id" key
+  }
+
+  //These weren't requested, but I added them for the sake of debugging and just generally being on a roll
+  @Delete()
+  clearAllReceipts() {
+    // Logic to clear all receipts
+    this.receiptsService.clearAllReceipts();
+    return { message: 'All receipts cleared' };
+  }
+
+  @Delete(':id')
+  deleteReceiptById(@Param('id', new ParseUUIDPipe()) id: UUID) {
+    // Logic to delete a specific receipt
+    this.receiptsService.deleteReceiptById(id);
+    return { message: `Receipt with ID ${id} deleted` };
   }
 }

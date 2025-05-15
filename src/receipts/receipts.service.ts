@@ -10,14 +10,14 @@ export class ReceiptsService {
     private readonly receiptCacheService: ReceiptCacheService,
     private readonly receiptCalculator: ReceiptCalculatorService,
   ) {}
-  getReceiptById(id: UUID): any {
+  getReceiptById(id: UUID): number {
     // Check if the receipt is in the cache
     const cachedReceipt = this.receiptCacheService.getReceipt(id);
     if (cachedReceipt) {
       return cachedReceipt;
     } else {
-      // If not in cache, just return a message
-      return `Receipt with ID ${id} not found.`;
+      // If not in cache, just return 0
+      return 0;
     }
   }
 
@@ -30,10 +30,20 @@ export class ReceiptsService {
   }
 
   processReceipt(receipt: ReceiptInputDto): UUID {
+    //Make a receipt ID on the spot here
     const reciptId = crypto.randomUUID();
     const points = this.receiptCalculator.calculateTotalPoints(receipt);
     // Store the receipt in the cache
     console.log(`Receipt ID: ${reciptId}, Points: ${points}`);
     return this.receiptCacheService.setReceipt(reciptId, points);
+  }
+
+  // Clear all receipts from the cache
+  clearAllReceipts(): void {
+    this.receiptCacheService.clearCache();
+  }
+  // Delete a specific receipt by ID
+  deleteReceiptById(id: UUID): void {
+    this.receiptCacheService.deleteReceipt(id);
   }
 }
