@@ -32,6 +32,10 @@ export class ReceiptCalculatorService {
       console.log(`Rule: ${rule.constructor.name}, Points: ${itemAmount}`);
       totalPoints += itemAmount;
     }
+    // Limit the total points to a maximum of 10,000 to prevent abuse of the system
+    //if (totalPoints > 10000) {
+    //  totalPoints = 10000;
+    //}
     return totalPoints;
   }
 }

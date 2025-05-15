@@ -10,18 +10,27 @@ import { Type } from 'class-transformer';
 
 export class ReceiptInputDto {
   @IsString()
-  @Matches(/^[\w\s\-&]+$/) // Allow letters, numbers, spaces, hyphens, and ampersands
+  @Matches(/^[\w\s\-&]+$/, {
+    message:
+      'The retailer name can only contain letters, numbers, spaces, hyphens, and ampersands',
+  }) // Allow letters, numbers, spaces, hyphens, and ampersands
   retailer: string;
 
   @Type(() => Date)
-  @IsDate()
+  @IsDate({
+    message: 'The purchase date must be a valid date',
+  })
   purchaseDate: string;
 
-  @Matches(/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/) // Matches HH:MM format
+  @Matches(/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/, {
+    message: 'The purchase time must be in HH:MM format, 24-hour format',
+  }) // Matches HH:MM format
   purchaseTime: string;
 
   @IsNumberString()
-  @Matches(/^\d+\.\d{2}$/) // Matches a number with two decimal places
+  @Matches(/^\d+\.\d{2}$/, {
+    message: 'The total must be a valid, positive number',
+  }) // Matches a postive number with two decimal places
   total: string;
 
   @ValidateNested({ each: true })
@@ -31,11 +40,16 @@ export class ReceiptInputDto {
 
 class ItemDto {
   @IsString()
-  @Matches(/^[\w\s-]+$/) // Allow letters, numbers, spaces, and hyphens
+  @Matches(/^[\w\s-]+$/, {
+    message:
+      'The short description can only contain letters, numbers, spaces, and hyphens',
+  }) // Allow letters, numbers, spaces, and hyphens
   shortDescription: string;
 
   @IsNumberString()
-  @Matches(/^\d+\.\d{2}$/) // Matches a number with two decimal places
+  @Matches(/^\d+\.\d{2}$/, {
+    message: 'All item totals must be a valid, positive number',
+  }) // Matches a positive number with two decimal places
   price: string;
   description: any;
 }
